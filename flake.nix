@@ -15,8 +15,14 @@
     poetry2nix,
   }:
     flake-utils.lib.eachDefaultSystem (system: let
-      inherit (poetry2nix.legacyPackages.${system}) mkPoetryApplication;
+      inherit (poetry2nix.legacyPackages.${system}) mkPoetryApplication mkPoetryEnv;
       pkgs = nixpkgs.legacyPackages.${system};
+      python = pkgs.python311;
+      pythonEnv = mkPoetryEnv {
+        inherit python;
+        pyproject = ./pyproject.toml;
+        poetrylock = ./poetry.lock;
+      };
     in {
       packages = {
         urlShortener = mkPoetryApplication {
@@ -26,8 +32,13 @@
       };
 
       devShells.default = pkgs.mkShell {
+        buildInputs = [
+          pythonEnv
+        ];
+
         packages = [
-          pkgs.python3
+          python
+
           poetry2nix.packages.${system}.poetry
         ];
       };
