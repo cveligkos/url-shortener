@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_htmx",
     "django_browser_reload",
-    "console",
+    "links",
 ]
 
 MIDDLEWARE = [

@@ -2,5 +2,5 @@ from django.template.response import TemplateResponse
 from django.shortcuts import render
 
 
-def index(request):
-    return TemplateResponse(request, "console/index.html", {})
+def list(request):
+    return TemplateResponse(request, "links/list.html", {})
