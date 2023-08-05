@@ -10,6 +10,7 @@ packages = [{ include = "url_shortener" }]
 python = "^3.11"
 django = "^4.2.4"
 django-htmx = "^1.16.0"
+django-browser-reload = "^1.11.0"
 
 
 [build-system]
