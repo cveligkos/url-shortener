@@ -1,6 +1,276 @@
 @import url("./reset.css");
 @import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
-html {
-    font-family: "Figtree", sans-serif;
+:root {
+  /* Earthy brown representing medieval themes */
+  --primary-earth-tone: #735c3c;
+  /* Lighter brown for variation in wood and soil */
+  --secondary-earth-tone: #a28b69;
+  /* Deep blue inspired by Vivi's iconic mage hat */
+  --vivi-blue: #323e6f;
+  /* Blond tone reflecting Zidane's hair */
+  --zidane-blond: #fad898;
+  /* Rich red inspired by Garnet's attire */
+  --garnet-red: #8b1f2b;
+  /* Metallic silver representing Steiner's armor */
+  --steiner-silver: #8a8d8f;
+  /* Green reflecting magical elements and forests */
+  --magic-green: #3daa4d;
+  /* Soft pink inspired by Moogles */
+  --moogle-pink: #f4a6c2;
+  /* Clear blue sky, often seen in outdoor scenes */
+  --sky-blue: #76a5d4;
+
+  /* Stone buildings of Alexandria */
+  --alexandria-stone: #7d6b5e;
+  /* Lindblum's earthy architecture */
+  --lindblum-brick: #955e3a;
+  /* Slick wet stones of Burmecia */
+  --burmecia-rain: #676c70;
+  /* Golden color of Chocobos */
+  --chocobo-footprint: #d9a742;
+  /* Reflection of water in Daguerreo */
+  --daguerreo-water: #5a736d;
+  /* Dark color of Black Mage hats */
+  --black-mage-hat: #2d2f33;
+  /* Lush forests of Mist Continent */
+  --mist-continent-forest: #4b644a;
+  /* Ancient bark of the Iifa Tree */
+  --ifa-tree-bark: #715e41;
+  /* Wooden structures in Conde Petie */
+  --conde-petie-wood: #7e6942;
+  /* Mud paths in Qu' s Marsh */
+  --qus-marsh-mud: #8a7f5b;
+
+  /* Representing the pervasive mist */
+  --mist-white: #f8f9fa;
+  /* Stone walls of the many castles */
+  --castle-stone: #d2d3d4;
+  /* Reflecting Steiner's knight armor */
+  --steiner-armor-silver: #b0b3b5;
+  /* Metalwork in airships */
+  --airship-metal: #94989b;
+  /* The grey of Tantalus band members' clothing */
+  --tantalus-cape-grey: #6d6f73;
+  /* Dark grey from the Black Mage robes */
+  --black-mage-robes: #3c3e41;
+  /* Soft white from Garnet's summoner robe */
+  --summoner-robe-white: #eaeded;
+  /* Slightly aged pages of old books */
+  --library-page-offwhite: #fbf8f2;
+
+  /* --box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; */
+  --box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+
+  --main-transition: cubic-bezier(0.165, 0.84, 0.44, 1) 140ms;
+}
+
+* {
+  /* outline: 1px solid red; */
+}
+
+body {
+  font-family: "Figtree", sans-serif;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  min-height: 100vh;
+  /* color: #333; */
+  color: var(--tantalus-cape-grey);
+  background-color: var(--summoner-robe-white);
+}
+
+.main-content {
+  flex: 1;
+  width: 100%;
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.navbar {
+  flex-shrink: 0;
+  height: 3.4rem;
+  /* height: 100%; */
+  /* font-variant: small-caps; */
+  text-transform: uppercase;
+  background-color: var(--mist-white);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: color(var(--secondary-earth-tone) lightness(+ 10%)); */
+  /* background-color: #fff; */
+  box-shadow: var(--box-shadow);
+}
+
+.navbar__list {
+  display: flex;
+  list-style: none;
+  height: 100%;
+}
+
+.navbar__list--left {
+  padding-left: 0%;
+}
+
+.navbar__list--left:first-child {
+  margin-left: -1rem;
+}
+
+.navbar__list--right {
+}
+
+.navbar__list--right:last-child {
+  margin-right: -1rem;
+}
+
+.navbar__link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  height: 100%;
+  padding: 0rem 2rem;
+  transition: var(--main-transition);
+  transform: skew(-20deg);
+  background-color: var(--secondary-earth-tone);
+  color: #fff;
+  box-shadow: var(--box-shadow);
+}
+
+.navbar__link-text {
+  transform: skew(20deg);
+  display: inline-block;
+  color: inherit;
+  color: #fff;
+}
+
+.navbar__link:hover {
+  background-color: var(--primary-earth-tone);
+}
+
+.navbar__link:visited {
+  color: inherit;
+}
+
+.navbar__link--brand {
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: initial;
+  /* padding: 0 2rem; */
+  height: 100%;
+  /* padding-left: -2rem; */
+  white-space: nowrap;
+}
+
+.page-header {
+  font-size: 3rem;
+}
+
+input {
+  accent-color: var(--vivi-blue);
+  color: inherit;
+}
+
+input[type="text"] {
+  margin: 0.5rem 0;
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  border: 2px solid var(--burmecia-rain);
+  border-radius: 2rem;
+  width: 100%;
+  /* box-shadow: var(--box-shadow) */
+  transition: border-color 200ms ease;
+  outline: none;
+}
+
+input:focus {
+  border-color: var(--chocobo-footprint);
+}
+
+.text-input--large {
+  font-size: 1.5rem;
+}
+
+label {
+  cursor: pointer;
+}
+
+.label--block {
+  display: block;
+}
+
+.label--large {
+  font-size: 1.5rem;
+}
+
+.button {
+  display: inline-block;
+  background-color: #fff;
+  color: #333;
+  border-radius: 4rem;
+  padding: 0.5rem 1.5rem;
+  border: 2px solid var(--burmecia-rain);
+  cursor: pointer;
+  transition: all 200ms ease;
+  width: fit-content;
+  text-decoration: none;
+  user-select: none;
+}
+
+.button:hover {
+  border-color: var(--chocobo-footprint);
+  background-color: #eee;
+}
+
+.button--block {
+  display: block;
+}
+
+.button--small {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.5rem;
+}
+
+.button--large {
+  font-size: 1.4em;
+}
+
+table {
+  width: 100%;
+}
+
+/* caption {} */
+
+thead {
+  background-color: var(--ifa-tree-bark);
+  color: var(--mist-white);
+}
+
+th,
+td {
+  padding: 1rem;
+}
+
+tr:nth-of-type(2n) {
+  background-color: hsl(0 0% 0% / 0.1);
+}
+
+@media (max-width: 380px) {
+  th {
+    display: none;
+  }
+
+  td {
+    display: grid;
+    grid-template-columns: 6ch auto;
+    padding: 0.5rem 1rem;
+  }
+
+  td::before {
+    content: attr(data-cell) ": ";
+    font-weight: 700;
+    text-transform: capitalize;
+  }
 }

@@ -1,15 +1,16 @@
 {% load static %} {% load django_htmx %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}URL Shortener{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-    <script src="{% static 'js/htmx.min-1.9.4.js' %}" defer></script>
-    {% django_htmx_script %}
-  </head>
-  <body>
-    <main>{% block 'content' %} {% endblock %}</main>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{% block title %}URL Shortener{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+        <script src="{% static 'js/htmx.min-1.9.4.js' %}" defer></script>
+        {% django_htmx_script %}
+    </head>
+    <body>
+        {% include 'includes/_navbar.html' %}
+        <main class="main-content">{% block 'content' %} {% endblock %}</main>
+    </body>
 </html>
