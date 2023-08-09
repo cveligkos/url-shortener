@@ -18,28 +18,39 @@
       inherit (poetry2nix.legacyPackages.${system}) mkPoetryApplication mkPoetryEnv;
       pkgs = nixpkgs.legacyPackages.${system};
       python = pkgs.python311;
+      poetryPkgs = poetry2nix.legacyPackages.${system};
+
       pythonEnv = mkPoetryEnv {
-        inherit python;
+        python = pkgs.python311;
         pyproject = ./pyproject.toml;
         poetrylock = ./poetry.lock;
+        overrides =
+          poetryPkgs.overrides.withDefaults
+          (self: super: {
+            django-browser-reload =
+              super.django-browser-reload.overridePythonAttrs
+              (
+                old: {
+                  buildInputs = (old.buildInputs or []) ++ [super.setuptools];
+                }
+              );
+          });
       };
     in {
       packages = {
         urlShortener = mkPoetryApplication {
           projectDir = self;
+          inherit python;
         };
         default = self.packages.${system}.urlShortener;
       };
 
       devShells.default = pkgs.mkShell {
-        buildInputs = [
-          pythonEnv
-        ];
-
         packages = [
+          pythonEnv
           python
-
           poetry2nix.packages.${system}.poetry
+          pkgs.litecli
         ];
       };
     });
