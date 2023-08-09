@@ -1,0 +1,15 @@
+<form action="{% url 'link_create' %}" method="post">
+    {% csrf_token %}
+
+    <label for="url" class="label label--large label--block">URL</label>
+    <input
+        type="text"
+        name="url"
+        id="url"
+        class="text-input text-input--large"
+    />
+
+    <button type="submit" class="button button--block button--large">
+        Shorten URL
+    </button>
+</form>

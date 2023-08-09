@@ -1,1 +1,33 @@
-{% extends 'base.html' %} {% block 'content' %} Hello, World! {% endblock %}
+{% extends 'base.html' %} {% block 'content' %}
+
+<a href="{% url 'link_create' %}" class="button">Short link</a>
+
+<table hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+    <thead>
+        <tr>
+            <th>URL</th>
+            <th>Hash</th>
+            <th>Visits</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for link in links %}
+        <tr>
+            <td data-cell="URL">{{link.url}}</td>
+            <td data-cell="Hash">{{link.hash}}</td>
+            <td data-cell="Visits">{{link.visits}}</td>
+            <td data-cell="Actions">
+                <a
+                    hx-delete="{% url 'link_delete' link.id  %}"
+                    hx-confirm="Are you sure?"
+                    class="button button--small"
+                    >Delete</a
+                >
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
