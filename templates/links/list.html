@@ -6,18 +6,19 @@
     <thead>
         <tr>
             <th>URL</th>
-            <th>Hash</th>
             <th>Visits</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
         {% for link in links %}
-        <tr>
+        <tr x-data="{url: '{{ host_url }}/{{ link.hash }}'}">
             <td data-cell="URL">{{link.url}}</td>
-            <td data-cell="Hash">{{link.hash}}</td>
             <td data-cell="Visits">{{link.visits}}</td>
             <td data-cell="Actions">
+                <button @click="$clipboard(url)" class="button button--small">
+                    Copy
+                </button>
                 <a
                     hx-delete="{% url 'link_delete' link.id  %}"
                     hx-confirm="Are you sure?"

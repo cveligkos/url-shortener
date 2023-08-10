@@ -7,6 +7,8 @@
         <title>{% block title %}URL Shortener{% endblock %}</title>
         <link rel="stylesheet" href="{% static 'css/style.css' %}" />
         <script src="{% static 'js/htmx.min-1.9.4.js' %}" defer></script>
+        <script src="{% static 'js/alpine-clipboard.js' %}" defer></script>
+        <script src="{% static 'js/alpinejs.min-3.12.3.js' %}" defer></script>
         {% django_htmx_script %}
     </head>
     <body>
