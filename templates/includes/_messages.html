@@ -1,0 +1,29 @@
+{% if messages %}
+    <ul class="message-list">
+        {% for message in messages %}
+            <li {% if message.tags %}class="message {% for tag in message.tags.split %}message--{{ tag }}{% endfor %}
+                "
+                {% endif %}
+                x-data="{showMessage: true}"
+                x-show="showMessage">
+
+                <div class="message__icon">
+                    {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+                        {% include 'icons/info-circle.svg' %}
+                    {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                        {% include 'icons/tick-circle.svg' %}
+                    {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+                        {% include 'icons/warning-2.svg' %}
+                    {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                        {% include 'icons/danger.svg' %}
+                    {% endif %}
+                </div>
+
+                <div class="message__text">{{ message }}</div>
+
+                <button class="message__dismiss" @click="showMessage = false">{% include 'icons/close-circle.svg' %}</button>
+            </li>
+
+        {% endfor %}
+    </ul>
+{% endif %}

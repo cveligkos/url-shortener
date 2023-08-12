@@ -173,7 +173,8 @@ input {
   color: inherit;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="password"] {
   margin: 0.5rem 0;
   padding: 0.5rem 1rem;
   font-size: 1.5rem;
@@ -273,4 +274,97 @@ tr:nth-of-type(2n) {
     font-weight: 700;
     text-transform: capitalize;
   }
+}
+
+.message-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem 0rem;
+  gap: 0.7rem;
+}
+
+.message {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+
+  font-size: 1.1rem;
+  background-color: var(--mist-white);
+  width: 40rem;
+  padding: 1rem 1rem 1rem 2rem;
+  position: relative;
+  border-radius: 0.2rem;
+  box-shadow: 4px 4px 10px hsl(0 0% 0% / 0.1);
+}
+
+.message::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0.25rem;
+  height: 100%;
+  border-top-left-radius: 0.2rem;
+  border-bottom-left-radius: 0.2rem;
+}
+
+.message__icon {
+  flex-shrink: 0;
+}
+
+.message__text {
+  flex: 1;
+}
+
+.message__dismiss {
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.message__dismiss:hover path {
+  transition: all 150ms;
+}
+
+.message__dismiss:hover path {
+  fill: var(--airship-metal);
+}
+
+.message__icon svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.message--info::before {
+  background-color: var(--vivi-blue);
+}
+
+.message--info .message__icon path {
+  fill: var(--vivi-blue);
+}
+
+.message--success::before {
+  background-color: var(--magic-green);
+}
+
+.message--success .message__icon path {
+  fill: var(--magic-green);
+}
+
+.message--warning::before {
+  background-color: var(--chocobo-footprint);
+}
+
+.message--warning .message__icon path {
+  fill: var(--chocobo-footprint);
+}
+
+.message--error::before {
+  background-color: var(--garnet-red);
+}
+
+.message--error .message__icon path {
+  fill: var(--garnet-red);
 }

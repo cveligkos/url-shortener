@@ -1,18 +1,29 @@
-{% load static %} {% load django_htmx %}
+{% load static %}
+{% load django_htmx %}
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{% block title %}URL Shortener{% endblock %}</title>
+        <meta name="description" content="A URL shortener written in Django">
+        <title>
+            {% block title %}URL Shortener{% endblock %}
+        </title>
         <link rel="stylesheet" href="{% static 'css/style.css' %}" />
         <script src="{% static 'js/htmx.min-1.9.4.js' %}" defer></script>
         <script src="{% static 'js/alpine-clipboard.js' %}" defer></script>
         <script src="{% static 'js/alpinejs.min-3.12.3.js' %}" defer></script>
         {% django_htmx_script %}
     </head>
+
     <body>
         {% include 'includes/_navbar.html' %}
-        <main class="main-content">{% block 'content' %} {% endblock %}</main>
+        {% include 'includes/_messages.html' %}
+
+        <main class="main-content">
+            {% block 'content' %}{% endblock %}
+        </main>
     </body>
+
 </html>
