@@ -1,22 +1,30 @@
 <nav class="navbar">
     <ul class="navbar__list navbar__list--left">
         <li>
-            <a class="navbar__link navbar__link--brand" href="#"
-                ><span class="navbar__link-text">URL S7r</span></a
-            >
+            <a class="navbar__link navbar__link--brand" href="/"><span class="navbar__link-text">URL S7r</span></a>
         </li>
     </ul>
 
     <ul class="navbar__list navbar__list--right">
-        <li>
-            <a href="{% url 'link_list' %}" class="navbar__link"
-                ><span class="navbar__link-text">My links</span></a
-            >
-        </li>
-        <li>
-            <a href="{% url 'link_create' %}" class="navbar__link"
-                ><span class="navbar__link-text">Short link</span></a
-            >
-        </li>
+        {% if user.is_authenticated %}
+
+            <li>
+                <a href="{% url 'link_create' %}" class="navbar__link"><span class="navbar__link-text">Short link</span></a>
+            </li>
+            <li>
+                <a href="{% url 'link_list' %}" class="navbar__link"><span class="navbar__link-text">My links</span></a>
+            </li>
+            <li>
+                <a href="{% url 'logout' %}" class="navbar__link"><span class="navbar__link-text">Logout</span></a>
+            </li>
+        {% else %}
+            <li>
+                <a href="{% url 'login' %}" class="navbar__link"><span class="navbar__link-text">Login</span></a>
+            </li>
+            <li>
+                <a href="{% url 'register' %}" class="navbar__link"><span class="navbar__link-text">Register</span></a>
+            </li>
+
+        {% endif %}
     </ul>
 </nav>

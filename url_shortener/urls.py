@@ -16,11 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path, re_path
+from django.views.generic import TemplateView
 
 from url_shortener.redirect import link_redirect
 
 
 urlpatterns = [
+    path("", TemplateView.as_view(template_name="home.html"), name="home"),
     path("admin/", admin.site.urls),
     path("", include("users.urls")),
     path("__reload__/", include("django_browser_reload.urls")),
