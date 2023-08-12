@@ -22,6 +22,7 @@ from url_shortener.redirect import link_redirect
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", include("users.urls")),
     path("__reload__/", include("django_browser_reload.urls")),
     path("links/", include("links.urls")),
     re_path("^(?P<hash>[A-Za-z0-9]{5})$", link_redirect, name="link_redirect"),
