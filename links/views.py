@@ -6,6 +6,7 @@ from django.urls import reverse
 from links.forms import LinkForm
 from links.models import Link
 from .shortener import shorten_url
+from django.contrib import messages
 
 
 def link_list(request: HttpRequest):
@@ -18,11 +19,11 @@ def link_create(request: HttpRequest):
     if request.method == "GET":
         return TemplateResponse(request, "links/create.html", {"link": Link()})
     elif request.method != "POST":
-        return HttpResponseNotAllowed()
+        return HttpResponseNotAllowed(["GET", "POST"])
 
     form = LinkForm(request.POST)
     form.is_valid()
-    if not "url" in form.errors:
+    if "url" not in form.errors:
         data = form.data.copy()
         data["hash"] = shorten_url(request.POST.get("url"))
         form = LinkForm(data)
@@ -38,7 +39,7 @@ def link_create(request: HttpRequest):
 
 def link_delete(request: HttpRequest, pk: int):
     if request.method != "DELETE":
-        return HttpResponseNotAllowed()
+        return HttpResponseNotAllowed(["DELETE"])
 
     link = get_object_or_404(Link, pk=pk)
 
