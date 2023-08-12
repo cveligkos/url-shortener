@@ -11,8 +11,22 @@ python = "^3.11"
 django = "^4.2.4"
 django-htmx = "^1.16.0"
 django-browser-reload = "^1.11.0"
+django-stubs = { extras = ["compatible-mypy"], version = "^4.2.3" }
 
+
+[tool.poetry.group.dev.dependencies]
+mypy = "<1.5.0"
+djlint = "^1.32.1"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+plugins = ["mypy_django_plugin.main"]
+
+[tool.django-stubs]
+django_settings_module = "url_shortener.settings"
+
+[tool.djlint]
+max_blank_lines = 1
