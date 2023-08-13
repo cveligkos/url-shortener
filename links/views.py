@@ -7,14 +7,17 @@ from links.forms import LinkForm
 from links.models import Link
 from .shortener import shorten_url
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
+@login_required
 def link_list(request: HttpRequest):
     links = Link.objects.all()
     context = {"links": links, "host_url": request.get_host()}
     return TemplateResponse(request, "links/list.html", context)
 
 
+@login_required
 def link_create(request: HttpRequest):
     if request.method == "GET":
         return TemplateResponse(request, "links/create.html", {"link": Link()})
@@ -29,7 +32,10 @@ def link_create(request: HttpRequest):
         form = LinkForm(data)
 
     if form.is_valid():
-        form.save()
+        link_instance = form.save(commit=False)
+        link_instance.created_by = request.user
+        link_instance.save()
+
         return redirect("link_list")
     else:
         form = LinkForm()
@@ -37,6 +43,7 @@ def link_create(request: HttpRequest):
     return TemplateResponse(request, "links/create.html", {"form": form})
 
 
+@login_required
 def link_delete(request: HttpRequest, pk: int):
     if request.method != "DELETE":
         return HttpResponseNotAllowed(["DELETE"])
