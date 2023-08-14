@@ -12,6 +12,8 @@ django = "^4.2.4"
 django-htmx = "^1.16.0"
 django-browser-reload = "^1.11.0"
 django-stubs = { extras = ["compatible-mypy"], version = "^4.2.3" }
+django-libsass = "^0.9"
+django-compressor = "^4.4"
 
 
 [tool.poetry.group.dev.dependencies]

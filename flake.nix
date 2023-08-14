@@ -34,6 +34,14 @@
                   buildInputs = (old.buildInputs or []) ++ [super.setuptools];
                 }
               );
+
+            django-libsass =
+              super.django-libsass.overridePythonAttrs
+              (
+                old: {
+                  buildInputs = (old.buildInputs or []) ++ [super.setuptools];
+                }
+              );
           });
       };
     in {

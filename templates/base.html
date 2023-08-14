@@ -1,5 +1,6 @@
 {% load static %}
 {% load django_htmx %}
+{% load compress %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +11,10 @@
         <title>
             {% block title %}URL Shortener{% endblock %}
         </title>
-        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+        {% compress css %}
+            <link rel="stylesheet" href="/static/scss/style.scss" type="text/x-scss">
+        {% endcompress %}
+
         <script src="{% static 'js/htmx.min-1.9.4.js' %}" defer></script>
         <script src="{% static 'js/alpine-clipboard.js' %}" defer></script>
         <script src="{% static 'js/alpinejs.min-3.12.3.js' %}" defer></script>

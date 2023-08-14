@@ -1,4 +1,4 @@
-@import url("./reset.css");
+@import url("../css/reset.css");
 @import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 :root {
@@ -67,12 +67,12 @@
 }
 
 * {
-  /* outline: 1px solid red; */
+  // outline: 1px solid red;
 }
 
 body {
   font-family: "Figtree", sans-serif;
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   /* align-items: center; */
   min-height: 100vh;
@@ -103,65 +103,64 @@ body {
   /* background-color: color(var(--secondary-earth-tone) lightness(+ 10%)); */
   /* background-color: #fff; */
   box-shadow: var(--box-shadow);
-}
 
-.navbar__list {
-  display: flex;
-  list-style: none;
-  height: 100%;
-}
+  .navbar__list {
+    display: flex;
+    list-style: none;
+    height: 100%;
+  }
 
-.navbar__list--left {
-  padding-left: 0%;
-}
+  .navbar__list--left {
+    padding-left: 0%;
+  }
 
-.navbar__list--left:first-child {
-  margin-left: -1rem;
-}
+  .navbar__list--left:first-child {
+    margin-left: -1rem;
+  }
 
-.navbar__list--right {
-}
+  .navbar__list--right {}
 
-.navbar__list--right:last-child {
-  margin-right: -1rem;
-}
+  .navbar__list--right:last-child {
+    margin-right: -1rem;
+  }
 
-.navbar__link {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  height: 100%;
-  padding: 0rem 2rem;
-  transition: var(--main-transition);
-  transform: skew(-20deg);
-  background-color: var(--secondary-earth-tone);
-  color: #fff;
-  box-shadow: var(--box-shadow);
-}
+  .navbar__link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    height: 100%;
+    padding: 0rem 2rem;
+    transition: var(--main-transition);
+    transform: skew(-20deg);
+    background-color: var(--secondary-earth-tone);
+    color: #fff;
+    box-shadow: var(--box-shadow);
 
-.navbar__link-text {
-  transform: skew(20deg);
-  display: inline-block;
-  color: inherit;
-  color: #fff;
-}
+    &-text {
+      transform: skew(20deg);
+      display: inline-block;
+      color: inherit;
+      color: #fff;
+    }
 
-.navbar__link:hover {
-  background-color: var(--primary-earth-tone);
-}
+    &:hover {
+      background-color: var(--primary-earth-tone);
+    }
 
-.navbar__link:visited {
-  color: inherit;
-}
+    &:visited {
+      color: inherit;
+    }
 
-.navbar__link--brand {
-  font-size: 2rem;
-  font-weight: bold;
-  text-transform: initial;
-  /* padding: 0 2rem; */
-  height: 100%;
-  /* padding-left: -2rem; */
-  white-space: nowrap;
+    &--brand {
+      font-size: 2rem;
+      font-weight: bold;
+      text-transform: initial;
+      /* padding: 0 2rem; */
+      height: 100%;
+      /* padding-left: -2rem; */
+      white-space: nowrap;
+    }
+  }
 }
 
 .page-header {
@@ -196,14 +195,14 @@ input:focus {
 
 label {
   cursor: pointer;
-}
 
-.label--block {
-  display: block;
-}
+  &--block {
+    display: block;
+  }
 
-.label--large {
-  font-size: 1.5rem;
+  &--large {
+    font-size: 1.5rem;
+  }
 }
 
 .button {
@@ -218,29 +217,28 @@ label {
   width: fit-content;
   text-decoration: none;
   user-select: none;
-}
 
-.button:hover {
-  border-color: var(--chocobo-footprint);
-  background-color: #eee;
-}
+  &:hover {
+    border-color: var(--chocobo-footprint);
+    background-color: #eee;
+  }
 
-.button--block {
-  display: block;
-}
+  &--block {
+    display: block;
+  }
 
-.button--small {
-  font-size: 0.75rem;
-  padding: 0.2rem 0.5rem;
-}
+  &--small {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+  }
 
-.button--large {
-  font-size: 1.4em;
+  &--large {
+    font-size: 1.4em;
+  }
 }
 
 table {
   width: 100%;
-}
 
 /* caption {} */
 
@@ -255,7 +253,7 @@ td {
 }
 
 tr:nth-of-type(2n) {
-  background-color: hsl(0 0% 0% / 0.1);
+  background-color: hsla(0, 0%, 0%, 0.1);
 }
 
 @media (max-width: 380px) {
@@ -276,6 +274,7 @@ tr:nth-of-type(2n) {
   }
 }
 
+}
 .message-list {
   display: flex;
   flex-direction: column;
@@ -296,75 +295,75 @@ tr:nth-of-type(2n) {
   padding: 1rem 1rem 1rem 2rem;
   position: relative;
   border-radius: 0.2rem;
-  box-shadow: 4px 4px 10px hsl(0 0% 0% / 0.1);
-}
+  box-shadow: 4px 4px 10px hsla(0, 0%, 0%, 0.1);
 
-.message::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0.25rem;
-  height: 100%;
-  border-top-left-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
-}
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0.25rem;
+    height: 100%;
+    border-top-left-radius: 0.2rem;
+    border-bottom-left-radius: 0.2rem;
+  }
 
-.message__icon {
-  flex-shrink: 0;
-}
+  &__icon {
+    flex-shrink: 0;
+  }
 
-.message__text {
-  flex: 1;
-}
+  &__text {
+    flex: 1;
+  }
 
-.message__dismiss {
-  background-color: inherit;
-  border: none;
-  cursor: pointer;
-}
+  &__dismiss {
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+  }
 
-.message__dismiss:hover path {
-  transition: all 150ms;
-}
+  &__dismiss:hover path {
+    transition: all 150ms;
+  }
 
-.message__dismiss:hover path {
-  fill: var(--airship-metal);
-}
+  &__dismiss:hover path {
+    fill: var(--airship-metal);
+  }
 
-.message__icon svg {
-  width: 2rem;
-  height: 2rem;
-}
+  &__icon svg {
+    width: 2rem;
+    height: 2rem;
+  }
 
-.message--info::before {
-  background-color: var(--vivi-blue);
-}
+  &--info::before {
+    background-color: var(--vivi-blue);
+  }
 
-.message--info .message__icon path {
-  fill: var(--vivi-blue);
-}
+  &--info .message__icon path {
+    fill: var(--vivi-blue);
+  }
 
-.message--success::before {
-  background-color: var(--magic-green);
-}
+  &--success::before {
+    background-color: var(--magic-green);
+  }
 
-.message--success .message__icon path {
-  fill: var(--magic-green);
-}
+  &--success .message__icon path {
+    fill: var(--magic-green);
+  }
 
-.message--warning::before {
-  background-color: var(--chocobo-footprint);
-}
+  &--warning::before {
+    background-color: var(--chocobo-footprint);
+  }
 
-.message--warning .message__icon path {
-  fill: var(--chocobo-footprint);
-}
+  &--warning .message__icon path {
+    fill: var(--chocobo-footprint);
+  }
 
-.message--error::before {
-  background-color: var(--garnet-red);
-}
+  &--error::before {
+    background-color: var(--garnet-red);
+  }
 
-.message--error .message__icon path {
-  fill: var(--garnet-red);
+  &--error .message__icon path {
+    fill: var(--garnet-red);
+  }
 }
